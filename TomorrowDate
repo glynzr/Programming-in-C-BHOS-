@@ -6,12 +6,10 @@ struct Date{
     int year;
 };
 struct Date Tomorrow(struct Date* date){
-    struct Date tomorrow;
-    if(date->day!=monthDay[date->month-1]){
+    struct Date tomorrow=*date;
+    if(date->day!=monthDay[date->month-1]) 
         tomorrow.day=date->day+1;
-        tomorrow.month=date->month;
-        tomorrow.year=date->year;
-    }else{
+    else{
         if(date->month==12){
             tomorrow.day=1;
             tomorrow.month=1;
@@ -20,16 +18,13 @@ struct Date Tomorrow(struct Date* date){
             if(date->year%4==0){
                 tomorrow.day=29;
                 tomorrow.month=2;
-                tomorrow.year=date->year;
             }else{
                 tomorrow.day=1;
                 tomorrow.month=3;
-                tomorrow.year=date->year;
             }
         }else{
             tomorrow.day=1;
             tomorrow.month=date->month+1;
-            tomorrow.year=date->year;
         }
     }
     return tomorrow;
