@@ -1,0 +1,45 @@
+#include <stdio.h>
+int monthDay[]={31,28,31,30,31,30,31,31,30,31,30,31};
+struct Date{
+    int month;
+    int day;
+    int year;
+};
+struct Date Tomorrow(struct Date* date){
+    struct Date tomorrow;
+    if(date->day!=monthDay[date->month-1]){
+        tomorrow.day=date->day+1;
+        tomorrow.month=date->month;
+        tomorrow.year=date->year;
+    }else{
+        if(date->month==12){
+            tomorrow.day=1;
+            tomorrow.month=1;
+            tomorrow.year=date->year+1;
+        }else if(date->month==2){
+            if(date->year%4==0){
+                tomorrow.day=29;
+                tomorrow.month=2;
+                tomorrow.year=date->year;
+            }else{
+                tomorrow.day=1;
+                tomorrow.month=3;
+                tomorrow.year=date->year;
+            }
+        }else{
+            tomorrow.day=1;
+            tomorrow.month=date->month+1;
+            tomorrow.year=date->year;
+        }
+    }
+    return tomorrow;
+}
+int main(){
+    struct Date today;
+    printf("Enter today\'s date (mm dd yyyy):");
+    scanf("%i%i%i",&today.month,&today.day,&today.year);
+    
+    struct Date tomorrow=Tomorrow(&today);
+    printf("Tomorrow\'s date is:%i/%i/%i\n",tomorrow.month,tomorrow.day,tomorrow.year);
+
+}
