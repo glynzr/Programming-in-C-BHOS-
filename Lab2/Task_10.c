@@ -1,20 +1,15 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <math.h>
 int isPrime(int x){
-    for(int i=2;i<x;i++){
-        if(x%i==0){
-            return 0;
-        }
+    if(x==1) return 0;
+    for(int i=2;i<sqrt(x);i++){
+        if(x%i==0) return 0;
     }
     return 1;
 }
 int main(){
     int n;
     scanf("%i",&n);
-    if(isPrime(n)){
-        printf("Yes\n");
-    }else{
-        printf("No\n");
-    }
 
+    printf("%s\n", isPrime(n) ? "Yes" : "No");
 }
