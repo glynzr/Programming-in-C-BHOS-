@@ -1,10 +1,8 @@
 #include <stdio.h>
+typedef long long int lli;
 int main(){
-    int m,n,result;
-    scanf("%i %i",&m,&n);
-    result=n/m;
-    if(n%m!=0){
-        result++;
-    }
-    printf("%i",result);
+    lli n,m;
+    scanf("%lli%lli",&n,&m);
+    printf("%lli",(m%n)==0? m/n : m/n+1);
+
 }
