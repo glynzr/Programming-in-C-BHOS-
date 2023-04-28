@@ -1,17 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-int SecondDigit(long int x){
-    if(x<0){
-        x=0-x;
-    }
-    while(x>100){
-        x/=10;
-    }
-    return x%10;
-}
+typedef long long int lli;
 int main(){
-    long int n;
-    scanf("%ld",&n);
-    printf("%i",SecondDigit(n));
-
+    lli n;
+    scanf("%lli",&n);
+    while(abs(n)>99){
+        n/=10;
+    }
+    printf("%lli",(lli) abs(n)%10);
+    
 }
